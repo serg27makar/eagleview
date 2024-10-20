@@ -7,9 +7,11 @@ const store = createStore(RootReducer);
 
 function App() {
   return (
-      <Provider store={store}>
-          <Main />
-      </Provider>
+      <div className="App">
+          <Provider store={store}>
+              <Main />
+          </Provider>
+      </div>
   );
 }
 

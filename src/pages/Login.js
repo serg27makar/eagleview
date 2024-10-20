@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-import PropTypes from 'prop-types';
 import {useSelector} from "react-redux";
 import '../index.css'
 import {Translator} from "../utils/translator/lang";
 import loginUser from "../utils/services/apiService";
+import {Link} from "react-router-dom";
 
 
-export default function Login({setToken, changeScreen}) {
+export default function Login() {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -23,7 +23,6 @@ export default function Login({setToken, changeScreen}) {
         if (!result) {
             NotificationManager.warning(Translator(state.lang, "AuthError"), "", 5000)
         } else {
-            setToken(result);
             NotificationManager.warning(Translator(state.lang, "Registration"), "center", 5000)
         }
     }
@@ -43,7 +42,7 @@ export default function Login({setToken, changeScreen}) {
                     </div>
                     <div className="footer">
                         <button className="btn" type="submit" onClick={() => handleSubmit()}>Login</button>
-                        <div className="linkBtn" onClick={() => changeScreen(false)}>Registration</div>
+                        <Link to="/registration"><div className="registerBtn">{Translator(state.lang, "SignUp")}</div></Link>
                     </div>
                 </div>
 
@@ -52,7 +51,3 @@ export default function Login({setToken, changeScreen}) {
         </div>
     )
 }
-
-Login.propTypes = {
-    setToken: PropTypes.func.isRequired
-};

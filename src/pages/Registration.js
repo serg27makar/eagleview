@@ -1,22 +1,25 @@
 import React, {useState} from 'react';
 import '../index.css'
-import PropTypes from "prop-types";
 import axios from 'axios'
 import {NotificationContainer, NotificationManager} from "react-notifications";
 import 'react-notifications/lib/notifications.css';
+import {Link} from "react-router-dom";
+import {Translator} from "../utils/translator/lang";
+import {useSelector} from "react-redux";
 
 async function submitUser(data) {
     return axios.post('http://localhost:8080/register', data)
         .then(res => res.data)
 }
 
-export default function RegistrationForm({setToken, changeScreen}) {
+export default function Registration() {
 
     const [firstName, setFirstName] = useState(null);
     const [lastName, setLastName] = useState(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState(null);
+    const state = useSelector(state => state.lang);
 
     const handleSubmit = async () => {
         const postData = {
@@ -34,7 +37,7 @@ export default function RegistrationForm({setToken, changeScreen}) {
             if (result && result.errMsg) {
                 NotificationManager.warning(result.errMsg, "", 5000)
             } else {
-                setToken(result);
+                NotificationManager.warning(result.errMsg, "", 5000)
             }
         } else {
             NotificationManager.warning("Всі поля повинні бути заповнені", "", 5000)
@@ -68,7 +71,7 @@ export default function RegistrationForm({setToken, changeScreen}) {
                 </div>
                 <div className="footer">
                     <button onClick={() => handleSubmit()} type="submit" className="btn">Register</button>
-                    <div className="linkBtn" onClick={() => changeScreen(true)}>Login</div>
+                    <Link to="/login"><div className="loginBtn">{Translator(state.lang, "SignIn")}</div></Link>
                 </div>
             </div>
             <NotificationContainer/>
@@ -76,7 +79,3 @@ export default function RegistrationForm({setToken, changeScreen}) {
 
     )
 }
-
-RegistrationForm.propTypes = {
-    setToken: PropTypes.func.isRequired
-};
