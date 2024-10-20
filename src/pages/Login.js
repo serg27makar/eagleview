@@ -4,20 +4,9 @@ import 'react-notifications/lib/notifications.css';
 import PropTypes from 'prop-types';
 import {useSelector} from "react-redux";
 import '../index.css'
-import axios from 'axios'
 import {Translator} from "../utils/translator/lang";
+import loginUser from "../utils/services/apiService";
 
-
-async function loginUser(data) {
-    const api = axios.create({
-        timeout: 5800,
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-    });
-    return api.post('http://localhost:8080/login', data)
-        .then(res => res.data)
-}
 
 export default function Login({setToken, changeScreen}) {
 
@@ -31,10 +20,11 @@ export default function Login({setToken, changeScreen}) {
             password
         }
         const result = await loginUser(postData);
-        if (result && result.errMsg) {
+        if (!result) {
             NotificationManager.warning(Translator(state.lang, "AuthError"), "", 5000)
         } else {
             setToken(result);
+            NotificationManager.warning(Translator(state.lang, "Registration"), "center", 5000)
         }
     }
 

@@ -1,6 +1,6 @@
 import Main from "./Main";
 import {createStore} from "redux";
-import {RootReducer} from "./reducer/reducer";
+import {RootReducer} from "./reducers/reducer";
 import {Provider} from "react-redux";
 
 const store = createStore(RootReducer);
