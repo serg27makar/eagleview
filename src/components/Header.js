@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Translator} from "../utils/translator/lang";
+import "../access/styles/header.css";
 
 export default function Header() {
 
@@ -13,7 +14,7 @@ export default function Header() {
                 <div className="bgImg2"/>
             </div>
             <div className="logoBlock">
-                <img className="logoImg" src="../access/images/logo.svg" alt="logo"/>
+                <img className="logoImg" src="../images/logo.svg" alt="logo"/>
                 <div className="logoTextBlock">
                     <span className="logoTitle"><em>Eagle</em>view</span>
                     <span className="logoSlog">{Translator(state.lang, "SmartCCTV")}</span>
