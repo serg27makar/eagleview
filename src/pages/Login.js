@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import PropTypes from 'prop-types';
+import {useSelector} from "react-redux";
 import '../index.css'
 import axios from 'axios'
+import {Translator} from "../utils/translator/lang";
 
 
 async function loginUser(data) {
@@ -13,7 +15,6 @@ async function loginUser(data) {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
     });
-    console.log(data, "***********")
     return api.post('http://localhost:8080/login', data)
         .then(res => res.data)
 }
@@ -22,6 +23,7 @@ export default function Login({setToken, changeScreen}) {
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const state = useSelector(state => state.lang);
 
     const handleSubmit = async e => {
         const postData = {
@@ -30,7 +32,7 @@ export default function Login({setToken, changeScreen}) {
         }
         const result = await loginUser(postData);
         if (result && result.errMsg) {
-            NotificationManager.warning(result.errMsg, "", 5000)
+            NotificationManager.warning(Translator(state.lang, "AuthError"), "", 5000)
         } else {
             setToken(result);
         }
@@ -46,7 +48,7 @@ export default function Login({setToken, changeScreen}) {
                         <input type="text" onChange={e => setEmail(e.target.value)}/>
                     </div>
                     <div className="inputWrapper">
-                        <label>Password </label>
+                        <label>{Translator(state.lang, "Password")}</label>
                         <input type="password" onChange={e => setPassword(e.target.value)}/>
                     </div>
                     <div className="footer">

@@ -1,10 +1,15 @@
 import Main from "./Main";
+import {createStore} from "redux";
+import {RootReducer} from "./reducer/reducer";
+import {Provider} from "react-redux";
+
+const store = createStore(RootReducer);
 
 function App() {
   return (
-    <div>
-      <Main/>
-    </div>
+      <Provider store={store}>
+          <Main />
+      </Provider>
   );
 }
 
