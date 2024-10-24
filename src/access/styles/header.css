@@ -55,9 +55,11 @@ em {
 }
 .logoSlog {
     font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 0.8rem;
+    line-height: 1rem;
     letter-spacing: -0.01em;
+    color: #B7C3EF;
+    padding-left: 0.6rem;
 }
 .aboutService {
     font-weight: 500;
@@ -97,71 +99,4 @@ em {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.formBox {
-    display: block;
-    width: 360px;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
-    color: #FFFFFF;
-}
-.titleLogin {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 42px;
-    letter-spacing: -0.01em;
-    color: #FFFFFF;
-}
-.formInputLabel {
-    width: 100%;
-    display: block;
-    text-align: left;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: -0.01em;
-    padding: 5px 20px;
-}
-.formInput {
-    width: 360px;
-    height: 50px;
-    background: #FFFFFF;
-    box-shadow: inset 0 1px 5px #D6D7DB;
-    border-radius: 3px;
-    padding: 0 25px;
-    outline: none;
-    font-size: 18px;
-    line-height: 21px;
-    letter-spacing: -0.01em;
-}
-.submitBtn {
-    width: 360px;
-    height: 54px;
-    background: #5F78D3;
-    box-shadow: 0 4px 12px rgba(95, 120, 211, 0.4);
-    border-radius: 3px;
-    outline: none;
-    margin: 20px 0 40px 0;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    letter-spacing: -0.01em;
-    color: #FFFFFF;
-    border: none;
-}
-.forgetText {
-    display: block;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: -0.01em;
-    color: #5F78D3;
-    width: 100%;
-    text-align: right;
-    padding: 5px;
-}
-.formLabel {
-    margin: 15px 0 0 0;
-    display: block;
 }

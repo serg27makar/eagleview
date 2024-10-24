@@ -1,11 +1,8 @@
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
 import {Translator} from "../utils/translator/lang";
 import "../access/styles/header.css";
 
 export default function Header() {
-
-    const state = useSelector(state => state.lang);
 
     return (
         <div className="headerBlock">
@@ -17,13 +14,13 @@ export default function Header() {
                 <img className="logoImg" src="../images/logo.svg" alt="logo"/>
                 <div className="logoTextBlock">
                     <span className="logoTitle"><em>Eagle</em>view</span>
-                    <span className="logoSlog">{Translator(state.lang, "SmartCCTV")}</span>
+                    <span className="logoSlog">{Translator("SmartCCTV")}</span>
                 </div>
             </div>
-            <div className="aboutService">{Translator(state.lang, "AboutService")}</div>
-            <div className="aboutService">{Translator(state.lang, "FrequentlyQuestions")}</div>
-            <Link to="/login"><div className="loginBtn">{Translator(state.lang, "SignIn")}</div></Link>
-            <Link to="/registration"><div className="registerBtn">{Translator(state.lang, "SignUp")}</div></Link>
+            <div className="aboutService">{Translator("AboutService")}</div>
+            <div className="aboutService">{Translator("FrequentlyQuestions")}</div>
+            <Link to="/login"><div className="loginBtn">{Translator("SignIn")}</div></Link>
+            <Link to="/registration"><div className="registerBtn">{Translator("SignUp")}</div></Link>
         </div>
     )
 }
