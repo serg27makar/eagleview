@@ -1,80 +1,83 @@
 import React, {useState} from 'react';
 import '../index.css'
-import axios from 'axios'
-import {NotificationContainer, NotificationManager} from "react-notifications";
 import 'react-notifications/lib/notifications.css';
 import {Link} from "react-router-dom";
 import {Translator} from "../utils/translator/lang";
-import {useSelector} from "react-redux";
+import {submitUser} from "../utils/services/apiService";
+import {useDispatch} from "react-redux";
+import {showAlertModal} from "../reducers/actions";
 
-async function submitUser(data) {
-    return axios.post('http://localhost:8080/register', data)
-        .then(res => res.data)
-}
 
 export default function Registration() {
 
-    const [firstName, setFirstName] = useState(null);
-    const [lastName, setLastName] = useState(null);
+    const [userName, setUserName] = useState(null);
     const [email, setEmail] = useState(null);
+    const [phone, setPhone] = useState(null);
     const [password, setPassword] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState(null);
-    const state = useSelector(state => state.lang);
+    const dispatch = useDispatch();
 
     const handleSubmit = async () => {
         const postData = {
-            firstName,
-            lastName,
+            userName,
             email,
+            phone,
             password
         }
-        if (firstName && lastName && email && password && confirmPassword) {
+        if (userName && email && phone && password && confirmPassword) {
             if (password !== confirmPassword) {
-                NotificationManager.warning("не вірно підтвердженний пароль", "", 5000)
+                dispatch(showAlertModal({
+                    message: "не вірно підтвердженний пароль"
+                }));
                 return;
             }
             const result = await submitUser(postData);
             if (result && result.errMsg) {
-                NotificationManager.warning(result.errMsg, "", 5000)
+                dispatch(showAlertModal({
+                    title: "AuthError",
+                    message: result.errMsg
+                }));
             } else {
-                NotificationManager.warning(result.errMsg, "", 5000)
+                dispatch(showAlertModal({
+                    title: "AuthError",
+                    message: result.errMsg
+                }));
             }
         } else {
-            NotificationManager.warning("Всі поля повинні бути заповнені", "", 5000)
+            dispatch(showAlertModal({
+                message: "Всі поля повинні бути заповнені"
+            }));
         }
     }
 
     return (
-        <div className="mainWrapper">
-            <div className="form">
-                <div className="form-body">
-                    <div className="inputWrapper">
-                        <label>First Name </label>
-                        <input type="text" onChange={e => setFirstName(e.target.value)}/>
-                    </div>
-                    <div className="inputWrapper">
-                        <label>Last Name </label>
-                        <input type="text" onChange={e => setLastName(e.target.value)}/>
-                    </div>
-                    <div className="inputWrapper">
-                        <label>Email </label>
-                        <input type="email" onChange={e => setEmail(e.target.value)}/>
-                    </div>
-                    <div className="inputWrapper">
-                        <label>Password </label>
-                        <input type="password" onChange={e => setPassword(e.target.value)}/>
-                    </div>
-                    <div className="inputWrapper">
-                        <label>Confirm Password </label>
-                        <input type="password" onChange={e => setConfirmPassword(e.target.value)}/>
-                    </div>
-                </div>
-                <div className="footer">
-                    <button onClick={() => handleSubmit()} type="submit" className="btn">Register</button>
-                    <Link to="/login"><div className="loginBtn">{Translator(state.lang, "SignIn")}</div></Link>
-                </div>
+        <div className="registrationScreen">
+            <h1 className="titleLogin">{Translator('Registration')}</h1>
+            <div className="formBox">
+                <label className="formLabel" htmlFor="userName">
+                    <span className="formInputLabel">{Translator('EnterYourName')}</span>
+                    <input className="formInput" type="text" name="userName" placeholder="Name" onChange={e => setUserName(e.target.value)}/>
+                </label>
+                <label className="formLabel" htmlFor="email">
+                    <span className="formInputLabel">{Translator('EnterYourEmail')}</span>
+                    <input className="formInput" type="email" name="email" placeholder="email" onChange={e => setEmail(e.target.value)}/>
+                </label>
+                <label className="formLabel" htmlFor="phone">
+                    <span className="formInputLabel">{Translator('EnterYourPhone')}</span>
+                    <input className="formInput" type="phone" name="phone" placeholder="phone" onChange={e => setPhone(e.target.value)}/>
+                </label>
+                <label className="formLabel" htmlFor="password">
+                    <span className="formInputLabel">{Translator('EnterYourPassword')}</span>
+                    <input className="formInput" type="password" name="password" placeholder="password" onChange={e => setPassword(e.target.value)}/>
+                </label>
+                <label className="formLabel" htmlFor="confirmPassword">
+                    <span className="formInputLabel">{Translator('RepeatYourPassword')}</span>
+                    <input className="formInput" type="password" name="confirmPassword" placeholder="Confirm password" onChange={e => setConfirmPassword(e.target.value)}/>
+                </label>
+                <button className="submitBtn signUpBtn" onClick={handleSubmit}>{Translator('SignUp')}</button>
+                <hr color="#5F78D380" size="1"/>
+                <div className="footerText">{Translator('AlreadyHaveAccount')}<Link to={"/login"}><em>{Translator('SignIn')}</em></Link></div>
             </div>
-            <NotificationContainer/>
         </div>
 
     )
