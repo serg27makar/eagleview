@@ -1,0 +1,55 @@
+.alertModal {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 6px;
+    width: 25rem;
+    max-width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(-5rem);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.alertModalBody {
+    position: relative;
+}
+.alertModalBtn:hover {
+    box-shadow: 4px 4px 4px;
+    right: -3px;
+    bottom: -21px;
+}
+.alertModalBtn {
+    position: absolute;
+    right: 0;
+    bottom: -18px;
+    width: 5rem;
+    padding: 0.3rem;
+    border-radius: 6px;
+    border: 1px solid #c19f9f;
+    background: #db9696;
+    box-shadow: 7px 7px 7px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.alertModal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
