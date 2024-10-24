@@ -18,7 +18,7 @@ export const ru = {
     FrequentlyQuestions: "Frequently asked Questions",
     SignIn: "Sign In",
     SignUp: "Sign up",
-    AlreadyHaveAaccount: "Already have an account? ",
+    AlreadyHaveAccount: "Already have an account? ",
 
     AddCamera: "Add camera",
 
