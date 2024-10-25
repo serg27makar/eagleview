@@ -7,7 +7,6 @@ import {submitUser} from "../utils/services/apiService";
 import {useDispatch} from "react-redux";
 import {setToken, setUser, showAlertModal} from "../reducers/actions";
 
-
 export default function Registration() {
 
     const [userName, setUserName] = useState(null);
@@ -81,6 +80,5 @@ export default function Registration() {
                 <div className="footerText">{Translator('AlreadyHaveAccount')}<Link to={"/login"}><em>{Translator('SignIn')}</em></Link></div>
             </div>
         </div>
-
     )
 }

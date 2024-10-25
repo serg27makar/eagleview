@@ -20,7 +20,6 @@ export default function Login() {
             password
         }
         const result = await loginUser(postData);
-        console.log(result)
         if (!result) {
             dispatch(showAlertModal({
                 title: "AuthError",
