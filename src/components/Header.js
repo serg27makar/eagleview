@@ -1,8 +1,38 @@
+import {FaDoorOpen, FaUserAlt} from "react-icons/fa";
+import React from 'react';
 import {Link} from "react-router-dom";
 import {Translator} from "../utils/translator/lang";
 import "../access/styles/header.css";
+import {useSelector} from "react-redux";
+import Translate from "../utils/translator/Translate";
 
 export default function Header() {
+    const state = useSelector(state => state.user);
+    const token = state.appToken;
+    const user = state.userInfo;
+
+    const viewButtons = () => {
+        return (
+            <>
+                <Link to="/login">
+                    <div className="loginBtn"><Translate text={"SignIn"} /></div>
+                </Link>
+                <Link to="/registration">
+                    <div className="registerBtn"><Translate text={"SignUp"} /></div>
+                </Link>
+            </>
+        )
+    }
+
+    const viewUserInfo = () => {
+        console.log()
+        return (
+            <div className="userBlock">
+                <div><FaUserAlt className="userInfoBtn"/><Translate text={user.userInfo.firstName} /></div>
+                <div><FaDoorOpen className="userInfoBtn"/><Translate text={"Logout"} /></div>
+            </div>
+        )
+    }
 
     return (
         <div className="headerBlock">
@@ -19,8 +49,7 @@ export default function Header() {
             </div>
             <div className="aboutService">{Translator("AboutService")}</div>
             <div className="aboutService">{Translator("FrequentlyQuestions")}</div>
-            <Link to="/login"><div className="loginBtn">{Translator("SignIn")}</div></Link>
-            <Link to="/registration"><div className="registerBtn">{Translator("SignUp")}</div></Link>
+            {!token ? viewButtons() : viewUserInfo()}
         </div>
     )
 }

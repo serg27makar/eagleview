@@ -100,3 +100,13 @@ em {
     align-items: center;
     justify-content: center;
 }
+
+.userBlock {
+    display: flex;
+    width: 10rem;
+    justify-content: space-between;
+    margin-left: 10rem;
+}
+.userInfoBtn {
+    padding-right: 0.5rem;
+}

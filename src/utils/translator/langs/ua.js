@@ -2,6 +2,7 @@ export const ua = {
     Password: "Введіть пароль",
     Registration: "Реєстрація",
     Login: "Авторизація",
+    Logout: "Вихід",
     AuthError: "Authentication error",
 
     EnterYourEmail: "Введіть ваш e-mail *",
