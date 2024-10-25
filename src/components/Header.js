@@ -3,13 +3,20 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {Translator} from "../utils/translator/lang";
 import "../access/styles/header.css";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Translate from "../utils/translator/Translate";
+import {setToken, setUser} from "../reducers/actions";
 
 export default function Header() {
     const state = useSelector(state => state.user);
     const token = state.appToken;
     const user = state.userInfo;
+    const dispatch = useDispatch();
+
+    const logout = () => {
+        dispatch(setUser(""))
+        dispatch(setToken(""))
+    }
 
     const viewButtons = () => {
         return (
@@ -25,11 +32,10 @@ export default function Header() {
     }
 
     const viewUserInfo = () => {
-        console.log()
         return (
             <div className="userBlock">
-                <div><FaUserAlt className="userInfoBtn"/><Translate text={user.userInfo.firstName} /></div>
-                <div><FaDoorOpen className="userInfoBtn"/><Translate text={"Logout"} /></div>
+                <div><FaUserAlt className="userInfoBtn"/><Translate text={user.userName} /></div>
+                <div className="logout" onClick={logout}><FaDoorOpen className="userInfoBtn"/><Translate text={"Logout"} /></div>
             </div>
         )
     }

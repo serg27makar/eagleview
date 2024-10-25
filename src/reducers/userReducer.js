@@ -1,16 +1,20 @@
 import {SET_TOKEN, SET_USER} from "./types";
 
 const initialState = {
-    appToken: null,
-    userInfo: null,
+    appToken: localStorage.getItem('token'),
+    userInfo: localStorage.getItem('userInfo'),
 }
 
 export const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_TOKEN:
-            return {...state, appToken: action.payload}
+            const appToken = action.payload;
+            localStorage.setItem('token', JSON.stringify(appToken));
+            return {...state, appToken }
         case SET_USER:
-            return {...state, userInfo: action.payload}
+            const {userInfo} = action.payload;
+            localStorage.setItem('userInfo', JSON.stringify(userInfo));
+            return {...state, userInfo}
         default:
             return state
     }

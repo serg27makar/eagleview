@@ -7,11 +7,11 @@ import {useSelector} from "react-redux";
 
 export default function Navigate() {
     const state = useSelector(state => state.user);
-    const token = state.appToken;
+    const token = !state.appToken || state.appToken === "" ? null : state.appToken;
 
     return (
         <Switch>
-            {token ? (
+            { token ? (
                 <>
                     <Route exact path="/" component={Home} />
                     <Route path="/home" component={Home} />

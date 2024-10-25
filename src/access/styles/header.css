@@ -110,3 +110,6 @@ em {
 .userInfoBtn {
     padding-right: 0.5rem;
 }
+.logout {
+    cursor: pointer;
+}
