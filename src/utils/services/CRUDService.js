@@ -3,7 +3,7 @@ import axios from 'axios'
 const axiosIns = axios.create({
     timeout: 5800,
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
     },
 })
 

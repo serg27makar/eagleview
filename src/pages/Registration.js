@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {Translator} from "../utils/translator/lang";
 import {submitUser} from "../utils/services/apiService";
 import {useDispatch} from "react-redux";
-import {showAlertModal} from "../reducers/actions";
+import {setToken, setUser, showAlertModal} from "../reducers/actions";
 
 
 export default function Registration() {
@@ -32,15 +32,17 @@ export default function Registration() {
                 return;
             }
             const result = await submitUser(postData);
-            if (result && result.errMsg) {
+            if (!result) {
                 dispatch(showAlertModal({
                     title: "AuthError",
-                    message: result.errMsg
+                    message: "Auth Error"
                 }));
             } else {
-                dispatch(showAlertModal({
-                    title: "AuthError",
-                    message: result.errMsg
+                dispatch(setToken({
+                    appToken: true
+                }));
+                dispatch(setUser({
+                    userInfo: result.user
                 }));
             }
         } else {

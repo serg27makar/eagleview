@@ -6,7 +6,7 @@ import {Translator} from "../utils/translator/lang";
 import {loginUser} from "../utils/services/apiService";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {showAlertModal} from "../reducers/actions";
+import {setToken, setUser, showAlertModal} from "../reducers/actions";
 
 export default function Login() {
 
@@ -20,14 +20,18 @@ export default function Login() {
             password
         }
         const result = await loginUser(postData);
+        console.log(result)
         if (!result) {
             dispatch(showAlertModal({
                 title: "AuthError",
                 message: "Auth Error"
             }));
         } else {
-            dispatch(showAlertModal({
-                message: "AuthError"
+            dispatch(setToken({
+                appToken: true
+            }));
+            dispatch(setUser({
+                userInfo: result.user
             }));
         }
     }
