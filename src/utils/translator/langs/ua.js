@@ -26,18 +26,15 @@ export const ua = {
     Statistics: "Статистика",
     Cabinet: "Особистий кабінет",
 
+    AddCamera: "Додати камеру",
+
+    outCamera: "Підключити камеру нагляду",
+    deviceCamera: "Активувати камеру пристрою",
+    addPhoto: "Аналіз фото",
+    addVideo: "Аналіз відео",
 
 
 
-
-
-
-
-
-
-
-
-    AddCamera: "Add camera",
 
     SaveSettings: "Save Settings",
     SaveChange: "Save change?",

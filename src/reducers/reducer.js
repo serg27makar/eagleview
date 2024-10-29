@@ -5,6 +5,6 @@ import {userReducer} from "./userReducer";
 
 export const RootReducer = combineReducers({
     lang: langReducer,
-    alertModal: modalReducer,
+    modal: modalReducer,
     user: userReducer,
 })

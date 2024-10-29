@@ -9,6 +9,18 @@
     transform: translateY(-5rem);
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
+.addCameraModal {
+    background-color: #11121C;
+    padding: 1rem;
+    border-radius: 6px;
+    width: 40.5rem;
+    height: 20rem;
+    max-width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(-5rem);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
 .alertModalBody {
     position: relative;
 }
@@ -49,7 +61,54 @@
     visibility: visible;
 }
 
+.addCameraModal.show,
 .alertModal.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+.headerBtnBlock {
+    display: flex;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #5F78D3;
+}
+.headerViewButton.active {
+    background: #5F78D3;
+}
+.headerViewButton {
+    height: 9rem;
+    width: 9rem;
+    background: #5F78D31A;
+    border: 1px solid #5F78D3;
+    margin: 0.5rem;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+.outCamera {
+    background-image: url("../images/camera.png");
+}
+.deviceCamera {
+    background-image: url("../images/deviceCamera.png");
+}
+.addPhoto {
+    background-image: url("../images/addPhoto.png");
+}
+.addVideo {
+    background-image: url("../images/addVideo.png");
+}
+.outCamera,
+.deviceCamera,
+.addPhoto,
+.addVideo {
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 3rem;
+    width: 3rem;
+    padding-top: 1rem;
+    margin: auto;
+}
+.headerViewButtonText {
+    text-align: center;
+    padding: 0 0.3rem;
 }

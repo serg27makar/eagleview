@@ -6,7 +6,7 @@ import Translate from "../../utils/translator/Translate";
 
 function AlertModal() {
     const [isVisible, setIsVisible] = useState(false);
-    const state = useSelector(state => state.alertModal);
+    const state = useSelector(state => state.modal);
     const dispatch = useDispatch();
 
     useEffect(() => {
