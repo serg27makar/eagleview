@@ -14,8 +14,8 @@ export default function Header() {
     const dispatch = useDispatch();
 
     const logout = () => {
-        dispatch(setUser(""))
-        dispatch(setToken(""))
+        dispatch(setUser({userInfo: null}))
+        dispatch(setToken({appToken: false}))
     }
 
     const viewButtons = () => {
