@@ -2,8 +2,11 @@ import React from 'react';
 import {Switch, Route, Redirect} from "react-router-dom";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
-import Home from "./pages/Home";
+import Cabinet from "./pages/Cabinet";
 import {useSelector} from "react-redux";
+import Camera from "./pages/Camera";
+import Statistic from "./pages/Statistic";
+import Settings from "./pages/Settings";
 
 export default function Navigate() {
     const state = useSelector(state => state.user);
@@ -13,10 +16,13 @@ export default function Navigate() {
         <Switch>
             { token ? (
                 <>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/home" component={Home} />
+                    <Route exact path="/" component={Camera} />
+                    <Route path="/camera" component={Camera} />
+                    <Route path="/settings" component={Settings} />
+                    <Route path="/statistic" component={Statistic} />
+                    <Route path="/cabinet" component={Cabinet} />
                     <Route path="*">
-                        <Redirect to="/home" />
+                        <Redirect to="/camera" />
                     </Route>
                 </>
             ) : (

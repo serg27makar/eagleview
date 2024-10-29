@@ -21,6 +21,22 @@ export const ua = {
     SignUp: "Зареєструватись",
     AlreadyHaveAccount: "Вже зареєстровані? ",
 
+    Camera: "Камери",
+    Customization: "Налаштування",
+    Statistics: "Статистика",
+    Cabinet: "Особистий кабінет",
+
+
+
+
+
+
+
+
+
+
+
+
     AddCamera: "Add camera",
 
     SaveSettings: "Save Settings",
