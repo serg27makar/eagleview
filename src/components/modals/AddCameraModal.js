@@ -4,6 +4,10 @@ import {showAddCameraModal} from "../../reducers/actions";
 import "../../access/styles/modal.css"
 import Translate from "../../utils/translator/Translate";
 import addCameraModalButtons from "../../access/resource/addCameraModalButtons";
+import ChooseCameraView from "./modalComponents/ChooseCameraView";
+import DeviceCameraView from "./modalComponents/DeviceCameraView";
+import AddPhotoView from "./modalComponents/AddPhotoView";
+import AddVideoView from "./modalComponents/AddVideoView";
 
 function AddCameraModal() {
     const [isVisible, setIsVisible] = useState(false);
@@ -40,45 +44,13 @@ function AddCameraModal() {
         )
     }
 
-    const chooseCameraView = () => {
-        return (
-            <div>
-                Camera 123
-            </div>
-            )
-    }
-
-    const deviceCameraView = () => {
-        return (
-            <div>
-                deviceCamera 123
-            </div>
-            )
-    }
-
-    const addPhotoView = () => {
-        return (
-            <div>
-                addPhotoView 123
-            </div>
-            )
-    }
-
-    const addVideoView = () => {
-        return (
-            <div>
-                addVideoView 123
-            </div>
-            )
-    }
-
     const viewSwitcher = () => {
         switch (isActive) {
-            case 'outCamera': return chooseCameraView();
-            case 'deviceCamera': return deviceCameraView();
-            case 'addPhoto': return addPhotoView();
-            case 'addVideo': return addVideoView();
-            default: return chooseCameraView();
+            case 'outCamera': return <ChooseCameraView/>;
+            case 'deviceCamera': return <DeviceCameraView/>;
+            case 'addPhoto': return <AddPhotoView/>;
+            case 'addVideo': return <AddVideoView/>;
+            default: return  <ChooseCameraView/>;
         }
     }
 
