@@ -1,8 +1,10 @@
 import React, {useEffect} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {showAlertModal} from "../reducers/actions";
 
 export default function DeviceCamera() {
     const camerasState = useSelector(state => state.cameras);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getStream().then()
@@ -13,7 +15,10 @@ export default function DeviceCamera() {
         try {
             video.srcObject = await navigator.mediaDevices.getUserMedia({ video: true });;
         } catch (error) {
-            console.error('Ошибка доступа к веб-камере:', error);
+            dispatch(showAlertModal({
+                title: "Ошибка доступа к веб-камере",
+                message: error.message
+            }));
         }
     }
 

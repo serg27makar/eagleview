@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Translate from "../../../utils/translator/Translate";
 import "../../../access/styles/modal.css"
 import outCameraArr from "../../../access/resource/tempResCamera";

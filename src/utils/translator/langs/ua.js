@@ -38,6 +38,7 @@ export const ua = {
     ConfirmActivationDeviceCamera: "Підтвердіть активацію камери пристрою",
     Confirm: "Підтверджую",
 
+    "Permission denied": "У дозволі відмовлено",
 
     SaveSettings: "Save Settings",
     SaveChange: "Save change?",
