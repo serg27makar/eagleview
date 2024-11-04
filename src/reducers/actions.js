@@ -1,4 +1,4 @@
-import {SET_TOKEN, SET_USER, SHOW_ADD_CAMERA_MODAL, SHOW_ALERT_MODAL} from "./types";
+import {SET_TOKEN, SET_USER, SHOW_ADD_BTN, SHOW_ADD_CAMERA_MODAL, SHOW_ALERT_MODAL} from "./types";
 
 export const showAlertModal = data => {
     return {
@@ -24,6 +24,13 @@ export const setToken = data => {
 export const setUser = data => {
     return {
         type: SET_USER,
+        payload: data
+    }
+};
+
+export const showAddBtn = data => {
+    return {
+        type: SHOW_ADD_BTN,
         payload: data
     }
 };

@@ -22,6 +22,10 @@ export const en = {
 
     AddCamera: "Add camera",
 
+
+
+    ConfirmActivationDeviceCamera: "Confirm activation of the device's camera",
+
     SaveSettings: "Save Settings",
     SaveChange: "Save change?",
     Cancel: "Cancel",

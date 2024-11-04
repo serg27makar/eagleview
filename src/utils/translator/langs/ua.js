@@ -33,7 +33,10 @@ export const ua = {
     addPhoto: "Аналіз фото",
     addVideo: "Аналіз відео",
 
+    ChooseCamera: "Виберіть камеру",
 
+    ConfirmActivationDeviceCamera: "Підтвердіть активацію камери пристрою",
+    Confirm: "Підтверджую",
 
 
     SaveSettings: "Save Settings",
@@ -42,7 +45,7 @@ export const ua = {
     OK: "OK",
     Save: "Save",
 
-    ChooseCamera: "Choose the camera",
+
     NoCameras: "No cameras",
     DisplayFeaturesOnScreen: "Display features on screen",
 

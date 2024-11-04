@@ -14,7 +14,7 @@
     padding: 1rem;
     border-radius: 6px;
     width: 40.5rem;
-    height: 20rem;
+    height: 26rem;
     max-width: 100%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     opacity: 0;
@@ -111,4 +111,28 @@
 .headerViewButtonText {
     text-align: center;
     padding: 0 0.3rem;
+}
+.chooseCameraViewTitle {
+    text-align: center;
+    color: #5F78D3;
+
+}
+.cameraNameBlock {
+    display: flex;
+    color: white;
+    padding: 0.5rem;
+}
+.chooseCameraNameBlock {
+    columns: 3;
+}
+.cameraName {
+    padding-left: 0.5rem;
+}
+.textPadding {
+    padding: 3rem;
+}
+.centerBtnBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
